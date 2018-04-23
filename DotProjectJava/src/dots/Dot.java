@@ -9,7 +9,8 @@ public abstract class Dot {
 	public Color c;
 	public int size;
 	
-	public ArrayList xPoints;
+	public ArrayList<Int[]> xPoints =  new ArrayList<Int[]>();
+	
 	
 	public abstract void movement();
 	
