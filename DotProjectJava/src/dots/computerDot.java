@@ -1,7 +1,7 @@
 package dots;
 import java.awt.Color;
 
-public class playingDots extends Dot{
+public class computerDot extends Dot{
 	
 	Integer[] p = new Integer[2];
 	
