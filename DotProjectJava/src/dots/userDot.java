@@ -2,51 +2,52 @@ package dots;
 
 public class userDot extends Dot {
 	
-	Integer[] p = new Integer[2];
+	private int score;
+	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
+	
+	public userDot(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions) {
+		super(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions);
+		this.score=0;
+	}
+	
+	public void endGame() {
+		//dot has been eaten, the game ends and shows score
+	}
 	
 	public void movement() {
-		//xLocation = p.x;
-	//	yLocation = p.y;
+		//will go directly to mouse's current location
 	}
 	
-	// fix!
-	public boolean collide(playingDots d) {
+	public void destroy(computerDot dot) {
+		//eats other dot
+		dot.delete();
+	}
+	
+	public void grow() {
+		this.radius = this.radius+1;
+		this.setRadius(this.getRadius()+1);
+	}
+	public boolean collisionCheck(computerDot dot) {
+		for(Integer[] point: dot.getcircPoints()) {
+			if(this.getcircPoints().contains(point)) {
+				//there is overlap of the circumfrences -- a collision has occurred
+				if(dot.getRadius()>this.getRadius()) {
+					//other dot is larger, game over
+					endGame();
+				}
+				else {
+					this.grow();
+					destroy(dot);
+					return true;
+				}
+			}
+			else {
+				return false;
+				//no collision has occurred
+			}
+		}
 		
 	}
 	
-	public void sizeChange() {
-		size+= 15;
-	}
 	
-	public void setOfPoints() {
-		
-		//Quadrant 1 of dot
-		for(int i = 0; i <= size; i++) {
-			p[0] = xLocation + size - i;
-			p[1] = yLocation + i;
-			points.add(p);
-		}
-		
-		//Quadrant 2 of dot
-		for(int i = 0; i <= size; i++) {
-			p[0] = xLocation - i;
-			p[1] = yLocation + size - i;
-			points.add(p);
-		}
-		
-		//Quadrant 3 of dot 
-		for(int i = 0; i <= size; i++) {
-			p[0] = xLocation - size + i;
-			p[1] = yLocation - i;
-			points.add(p);
-		}
-		
-		//Quadrant 4 of dot
-		for(int i = 0; i <= size; i++) {
-			p[0] = xLocation + i;
-			p[1] = yLocation - size + i;
-			points.add(p);
-		}
-	}
-
 }

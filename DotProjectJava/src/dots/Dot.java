@@ -62,11 +62,27 @@ public abstract class Dot {
 		center[1] = y;
 		setPoints();
 	}
+	public abstract boolean collisionCheck();//checks for collision with every movement
 	public abstract void movement();//movement for random  dot will be according to pattern, movement for  userdot will be directly to cursor's current location
-	public abstract void displayColor();
+	public void displayColor() {
+		//displays color
+	}
+	
+	public ArrayList<Integer[]> getcircPoints(){
+		return circumfrencePts;
+	}
 	
 	public boolean isEdge(int[] pt) {
 		return (circumfrencePts.contains(pt));
+	}
+	
+	public void setColor(Color c) {
+		this.c = c;
+		//used for changing color as user dot grows
+	}
+	
+	public void setRadius(int newRadius) {
+		this.radius = newRadius;
 	}
 	
 	public int getCenterX() {
