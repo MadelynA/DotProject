@@ -1,6 +1,6 @@
 package dots;
 
-public class User_Dot extends Dot {
+public class userDot extends Dot {
 	
 	Integer[] p = new Integer[2];
 	
