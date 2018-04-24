@@ -72,7 +72,7 @@ public abstract class Dot {
 		return circumfrencePts;
 	}
 	
-	public boolean isEdge(int[] pt) {
+	public boolean isEdge(Integer[] pt) {
 		return (circumfrencePts.contains(pt));
 	}
 	
