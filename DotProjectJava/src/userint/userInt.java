@@ -6,35 +6,36 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-public 
-public class UserInterface extends Application {
-    
-    @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+public class userInt extends Application {
+	
+	public Stage stage;
+	
+	public userInt() {
+		this.stage = new Stage(StageStyle.DECORATED);//stage
+	}
+	
+	public Stage returnStage() {
+		return stage;
+	}
+	
+    public void start(Stage stage) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 400, 300, Color.WHITE);
+
+        stage.setTitle("Dot Game");
+        stage.setScene(scene);
+        stage.show();
+    }
+
  
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-
- Scene scene = new Scene(root, 300, 250);
-
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
 }
- public static void main(String[] args) {
-        new userInt();
-        userInt.start();
-    }
 

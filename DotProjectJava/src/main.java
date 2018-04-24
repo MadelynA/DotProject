@@ -1,9 +1,10 @@
+import userint.userInt;
 
 public class main {
-
+	
 	public static void main(String[] args) {
-		new userInt();
-
-	}
+        userInt UI = new userInt();
+        UI.start(UI.returnStage());
+    }
 
 }
