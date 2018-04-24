@@ -3,15 +3,18 @@ package dots;
 public class userDot extends Dot {
 	
 	private int score;
+	public ArrayList<computerDot> dotList;
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	
-	public userDot(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions) {
+	public userDot(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions, ArrayList<computerDot> dotList) {
 		super(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions);
 		this.score=0;
+		this.dotList = dotList;
 	}
 	
 	public void endGame() {
 		//dot has been eaten, the game ends and shows score
+		//first it stops every other dot
 	}
 	
 	public void movement() {
@@ -48,6 +51,7 @@ public class userDot extends Dot {
 		}
 		
 	}
+	
 	
 	
 }
