@@ -12,7 +12,7 @@ public class userDot extends Dot {
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	
 	public userDot(int xCenter, int yCenter, Color color, int radius) {
-		super( xCenter, yCenter, color, radius);
+		super(xCenter, yCenter, color, radius);
 		this.score=0;
 		initDot();
 	}
@@ -27,7 +27,7 @@ public class userDot extends Dot {
 	}
 	
 	public void movement(int xChange, int yChange) {
-		this.setCenter(center[0]+xChange, center[1]+yChange);
+		this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);
 		//will go in direction of change
 	}
 	

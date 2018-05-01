@@ -29,10 +29,8 @@ public abstract class Dot {
 	public void setCenter(int x, int y) {
 		center[0] = x;
 		center[1] = y;
-		setPoints();
 	}
-	public abstract boolean collisionCheck(computerDot dot);//checks for collision with every movement
-	public abstract void movement();//movement for random  dot will be according to pattern, movement for  userdot will be directly to cursor's current location
+	public abstract void movement(int xChange, int yChange);//movement for random  dot will be according to pattern, movement for  userdot will be directly to cursor's current location
 	public void displayColor() {
 		//displays color
 	}
