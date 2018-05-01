@@ -31,10 +31,6 @@ public class userDot extends Dot {
 		//will go in direction of change
 	}
 	
-	public void destroy(computerDot dot) {
-		//eats other dot
-		dot.delete();
-	}
 	
 	public void setColor(Color c) {
 		this.c = c;
