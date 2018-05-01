@@ -1,5 +1,6 @@
 package dots;
 
+import java.awt.geom.Ellipse2D;
 import java.util.List;
 
 public class DotList {
@@ -17,6 +18,21 @@ public class DotList {
 	}
 	
 	public static void initDots(int num) {
+		
+	}
+	
+public boolean collisionCheck() {
+		
+		Ellipse2D.Double ellipse = uDot.getCirc();
+		for(Dot dot: dots) {
+			Ellipse2D.Double ellipse2 =  dot.getCirc();
+			if(ellipse.intersects(ellipse2.getBounds2D())) {
+				//collision
+				
+			}
+		
+		
+		}
 		
 	}
 

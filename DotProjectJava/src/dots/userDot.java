@@ -1,15 +1,21 @@
 package dots;
 
+import java.awt.Color;
+import java.awt.geom.Ellipse2D;
+
 public class userDot extends Dot {
 	
 	private int score;
-	public ArrayList<computerDot> dotList;
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	
-	public userDot(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions, ArrayList<computerDot> dotList) {
-		super(int xCenter, int yCenter, Color color, int radius, int[] boardDimensions);
+	public userDot(int xCenter, int yCenter, Color color, int radius) {
+		super(int xCenter, int yCenter, Color color, int radius);
 		this.score=0;
-		this.dotList = dotList;
+		initDot();
+	}
+	
+	private void initDot() {
+		//set up image
 	}
 	
 	public void endGame() {
@@ -26,30 +32,19 @@ public class userDot extends Dot {
 		dot.delete();
 	}
 	
+	public void setColor(Color c) {
+		this.c = c;
+		//used for changing color as user dot grows
+	}
+	
+	public void setRadius(int newRadius) {
+		this.setRadius(newRadius);
+		//used for changing size as user grows
+	}
+	
 	public void grow() {
 		this.radius = this.radius+1;
 		this.setRadius(this.getRadius()+1);
-	}
-	public boolean collisionCheck(computerDot dot) {
-		for(Integer[] point: dot.getcircPoints()) {
-			if(this.getcircPoints().contains(point)) {
-				//there is overlap of the circumfrences -- a collision has occurred
-				if(dot.getRadius()>this.getRadius()) {
-					//other dot is larger, game over
-					endGame();
-				}
-				else {
-					this.grow();
-					destroy(dot);
-					return true;
-				}
-			}
-			else {
-				return false;
-				//no collision has occurred
-			}
-		}
-		
 	}
 	
 	

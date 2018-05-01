@@ -1,5 +1,7 @@
 package dots;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class computerDot extends Dot{
 	
