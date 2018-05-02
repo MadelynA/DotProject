@@ -1,3 +1,4 @@
+//User Int class is the menu and display containing the board
 package userint;
 import javafx.*;
 import javafx.application.Application;
@@ -15,14 +16,45 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
-public class userInt extends Application {
+import dots.*;
+
+public class userInt extends JFrame {
 	
 	public Stage stage;
+	private userDot uDot;
+	private ArrayList<computerDot> dots = new ArrayList<computerDot>();
+	private boolean inGame;
+	private final int Board_WIDTH = 500;
+	private final int Board_HEIGHT = 400;
+	private final int centerX = Board_WIDTH/2;
+	private final int centerY = Board_HEIGHT/2;
+	//initializes variables for location
+	
 	
 	public userInt() {
-		this.stage = new Stage(StageStyle.DECORATED);//stage
+		initUI();
+	}
+	
+	private void initUI() {
+		//creates the board and  initializes menu
+		add(new Board());
+		//TODO
+		//this puts board in the center -- will be moved later
+		setSize(250,200);
+		setTitle("Dot Game");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		//centers window on screen
+		//creates buttons for menu on left
+		
+		//listens to button 
+		
+		
 	}
 	
 	public Stage returnStage() {
