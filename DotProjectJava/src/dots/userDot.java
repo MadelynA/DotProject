@@ -26,7 +26,7 @@ public class userDot extends Dot {
 		//first it stops every other dot
 	}
 	
-	public void movement(int xChange, int yChange) {
+	public void movement() {
 		this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);
 		//will go in direction of change
 	}

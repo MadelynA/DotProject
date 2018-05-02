@@ -26,9 +26,6 @@ import dots.*;
 public class userInt extends JFrame {
 	
 	public Stage stage;
-	private userDot uDot;
-	private ArrayList<computerDot> dots = new ArrayList<computerDot>();
-	private boolean inGame;
 	private final int Board_WIDTH = 500;
 	private final int Board_HEIGHT = 400;
 	private final int centerX = Board_WIDTH/2;
