@@ -2,6 +2,8 @@ package userint;
 //board class is the actual display of the game
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.*;
 
@@ -53,8 +55,8 @@ public class Board extends JPanel implements ActionListener{
 				}
 				else {
 					dots.remove(cDot);
-					int randomXORY
-					dots.add(new computerDot())
+					int randomXORY;
+					dots.add(new computerDot());
 				}
 			}
 		}
