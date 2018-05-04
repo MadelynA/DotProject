@@ -50,6 +50,8 @@ public class run extends JPanel{
 		g2d.setStroke(new BasicStroke(1));
 		g2d.setColor(Color.black);
         
+		g2d.draw(e);
+		
     }
 
 }
