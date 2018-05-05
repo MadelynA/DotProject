@@ -30,7 +30,7 @@ public abstract class Dot {
 		center[0] = x;
 		center[1] = y;
 	}
-	public abstract void movement(int xChange, int yChange);//movement for random  dot will be according to pattern, movement for  userdot will be directly to cursor's current location
+	public abstract void movement();//movement for random  dot will be according to pattern, movement for  userdot will be directly to cursor's current location
 	public void displayColor() {
 		//displays color
 	}

@@ -1,20 +1,47 @@
 package dots;
 import java.awt.Color;
+import userint.Keyboard;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class computerDot extends Dot{
+	private int BOARD_HEIGHT;
+	private int BOARD_WIDTH;
+	private int centerChange;
 	private int xChange = 0;
 	private int yChange = 0;
 	private int mType;
+	private Keyboard  k;
 	
 	
-	//keeps track of list so it can delete itself when  it gets consumed
-	
-	
-	public computerDot(int xCenter, int yCenter, Color color, int radius) {
+	public computerDot(int width, int height, Color color, int radius, Keyboard k) {
+		super(0, 0, color, radius);
 		mType = (int) (Math.random()*4);
-		super( xCenter, yCenter, color, radius);
+		BOARD_HEIGHT=height;
+		BOARD_WIDTH = width;
+		//sets xCenter and yCenter based on direction of movement
+		if(mType ==0) {
+			//it goes only left so  it starts along the right side
+			centerChange = (int) (Math.random()*BOARD_HEIGHT);//change this val if board height changes
+			this.setCenter(BOARD_WIDTH, centerChange);
+		}
+		if(mType == 1) {
+			//only right so  starts on left edge
+			centerChange = (int) (Math.random()*BOARD_HEIGHT);
+			this.setCenter(0, centerChange);
+		}
+		if(mType == 2) {
+			//moves down so begins along top
+			centerChange = (int) (Math.random()*BOARD_WIDTH);
+			this.setCenter(centerChange, BOARD_HEIGHT);
+		}
+		if(mType == 3) {
+			//moves up so begins on bottom
+			centerChange = (int) (Math.random()*BOARD_WIDTH);
+			this.setCenter(centerChange, 0);
+		}
+		
+		this.k = k;
 		//xCenter and yCenter are randomly assigned from the side of the frame
 		//radius is randomly assigned
 	}

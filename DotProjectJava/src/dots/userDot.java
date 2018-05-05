@@ -1,6 +1,7 @@
 package dots;
 
 import java.awt.Color;
+import userint.Keyboard;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
 
@@ -9,11 +10,13 @@ public class userDot extends Dot {
 	private int score;
 	private int xChange;
 	private int yChange;
+	private Keyboard k;
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	
-	public userDot(int xCenter, int yCenter, Color color, int radius) {
+	public userDot(int xCenter, int yCenter, Color color, int radius, Keyboard k) {
 		super(xCenter, yCenter, color, radius);
 		this.score=0;
+		this.k = k;
 		initDot();
 	}
 	
@@ -21,12 +24,22 @@ public class userDot extends Dot {
 		//set up image
 	}
 	
-	public void endGame() {
-		//dot has been eaten, the game ends and shows score
-		//first it stops every other dot
-	}
 	
 	public void movement() {
+		
+		if(k.isKeyDown(KeyEvent.VK_DOWN)) {
+			yChange = -1;
+		}//use else if so that both don't happen
+		else if(k.isKeyDown(KeyEvent.VK_UP)) {
+			yChange = 1;
+		}
+		if(k.isKeyDown(KeyEvent.VK_LEFT)) {
+			xChange = -1;
+		}
+		else if(k.isKeyDown(KeyEvent.VK_RIGHT)) {
+			xChange = 1;
+		}
+		
 		this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);
 		//will go in direction of change
 	}
@@ -48,46 +61,12 @@ public class userDot extends Dot {
 		this.setRadius(this.getRadius()+1);
 	}
 	
-	public void keyPress(KeyEvent e) {
-		//finds key and decides which direction to go for movement
-		int key = e.getKeyCode();
-		
-		if(key == KeyEvent.VK_UP) {
-			//goes up
-			yChange = 1;
-		}
-		if(key == KeyEvent.VK_LEFT) {
-			//goes left
-			xChange = -1;
-		}
-		if(key == KeyEvent.VK_RIGHT) {
-			//goes right
-			xChange = 1;
-		}
-		if(key==KeyEvent.VK_DOWN) {
-			//goes down
-			yChange = -1;
-		}
-		if(key==KeyEvent.VK_PERIOD) {
-			//this will be the quick quit button
-			endGame();
-		}
-		
+	public int getRadius() {
+		return this.radius;
 	}
 	
-	public void keyRelease(KeyEvent e) {
-		int key = e.getKeyCode();
-		
-		if(key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
-			xChange = 0;
-		}
-		if(key==KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
-			yChange = 0;
-		}
-		if(key==KeyEvent.VK_PERIOD) {
-			endGame();
-		}
-	}
+	
+	
 	
 	
 	

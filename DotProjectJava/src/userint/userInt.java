@@ -30,6 +30,7 @@ public class userInt extends JFrame {
 	private final int Board_HEIGHT = 400;
 	private final int centerX = Board_WIDTH/2;
 	private final int centerY = Board_HEIGHT/2;
+	private Keyboard k;
 	//initializes variables for location
 	
 	
@@ -40,6 +41,8 @@ public class userInt extends JFrame {
 	private void initUI() {
 		//creates the board and  initializes menu
 		add(new Board());
+		k = new Keyboard();
+		addKeyListener(k);
 		//TODO
 		//this puts board in the center -- will be moved later
 		setSize(250,200);
