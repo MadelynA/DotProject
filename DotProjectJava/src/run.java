@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 import userint.userInt;
 
 //this class runs the program
-public class run extends Pane{
+public class run extends Application{
 
 	public static void main(String[] args) {
 		
@@ -37,7 +37,6 @@ public class run extends Pane{
 		
 	}
 	
-	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		Circle circle = new Circle();
