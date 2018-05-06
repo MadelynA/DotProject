@@ -29,7 +29,7 @@ public static void main(String[] args) {
 		Pane canvas = new Pane();
     	Scene scene = new Scene(canvas, 500, 500);
     	Circle ball = new Circle(30);
-        ball.relocate(0, 10);
+        ball.relocate(100, 300);
         
         canvas.getChildren().add(ball);
         
