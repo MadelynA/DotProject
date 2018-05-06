@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
@@ -24,6 +25,7 @@ public class Board extends JPanel implements ActionListener{
 	private Keyboard k;
 	//sets location of dot start to center so that it begins in center
 	public Board() {
+		dots = new ArrayList<computerDot>();
 		k = new Keyboard();
 		addKeyListener(k);
 		initBoard();
