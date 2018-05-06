@@ -1,7 +1,6 @@
 package dots;
 import javafx.scene.paint.Color;
 import userint.Keyboard;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class computerDot extends Dot{

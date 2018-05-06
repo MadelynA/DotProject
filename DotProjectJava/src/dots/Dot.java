@@ -1,6 +1,5 @@
 package dots;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import javafx.scene.shape.Ellipse;
@@ -21,12 +20,13 @@ public abstract class Dot {
 	}
 	//uses an  ellipse to find the outside of the dot
 	public Ellipse getCirc(){
-		DoubleProperty centerX = new DoubleProperty().setValue();
-		double upLeftx = (double) (center[0]-radius);
-		double upLefty = (double) (center[1]+radius);
-		double diameter = (double) (radius*2);
-		return new Ellipse2D.Double(diameter, diameter, upLeftx, upLefty);
-	}
+		Ellipse ellipse = new Ellipse();
+		ellipse.setCenterX((double)center[0]);
+		ellipse.setCenterY((double)center[1]);
+		ellipse.setRadiusX((double)radius);
+		ellipse.setRadiusY((double)radius);
+		return ellipse;
+		}
 	//this method sets new center from movement
 	public void setCenter(int x, int y) {
 		center[0] = x;

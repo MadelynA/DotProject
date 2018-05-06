@@ -1,9 +1,11 @@
 package dots;
 
-import java.awt.Color;
+
+import javafx.scene.paint.Color;
 import userint.Keyboard;
-import java.awt.event.KeyEvent;
-import java.awt.geom.Ellipse2D;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Ellipse;
 
 public class userDot extends Dot {
 	
@@ -27,17 +29,20 @@ public class userDot extends Dot {
 	
 	public void movement() {
 		
-		if(k.isKeyDown(KeyEvent.VK_DOWN)) {
-			yChange = -1;
-		}//use else if so that both don't happen
-		else if(k.isKeyDown(KeyEvent.VK_UP)) {
-			yChange = 1;
-		}
-		if(k.isKeyDown(KeyEvent.VK_LEFT)) {
-			xChange = -1;
-		}
-		else if(k.isKeyDown(KeyEvent.VK_RIGHT)) {
-			xChange = 1;
+		if(k.isKeyPressed()) {
+			if(k.whatKeyDown().equals(KeyCode.DOWN)) {
+				yChange = -1;
+			}
+			//else so that both don't happen
+			else if(k.whatKeyDown().equals(KeyCode.UP)) {
+				yChange = 1;
+			}
+			if(k.whatKeyDown().equals(KeyCode.LEFT)) {
+				xChange = -1;
+			}
+			else if (k.whatKeyDown().equals(KeyCode.RIGHT)) {
+				xChange = 1;
+			}
 		}
 		
 		this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);

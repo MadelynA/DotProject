@@ -40,7 +40,7 @@ public class userInt extends JFrame {
 	
 	private void initUI() {
 		//creates the board and  initializes menu
-		add(new Board());
+		add(new Board(stage));
 		k = new Keyboard();
 		addKeyListener(k);
 		//TODO

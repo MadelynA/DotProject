@@ -1,19 +1,18 @@
 package userint;
 //board class is the actual display of the game
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.geom.Ellipse2D;
+
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.*;
-
-import javax.swing.JPanel;
 import dots.*;
 
-public class Board extends JPanel implements ActionListener{
+public class Board extends Pane{
 	
 	private userDot uDot;
 	private List<computerDot> dots;
@@ -24,22 +23,20 @@ public class Board extends JPanel implements ActionListener{
 	private final int startDot_Y = HEIGHT/2;
 	private Keyboard k;
 	//sets location of dot start to center so that it begins in center
-	public Board() {
+	public Board(Stage stage) {
 		dots = new ArrayList<computerDot>();
 		k = new Keyboard();
-		addKeyListener(k);
-		initBoard();
+		initBoard(stage);
 		startGame();
 	}
 	
-	private void initBoard() {
-		KeyAdapter joe = null;
-		addKeyListener(joe);
-		setBackground(Color.WHITE);
-		//sets background of board to  be white for dots
-		setDoubleBuffered(true);
+	private void initBoard(Stage stage) {
+		Pane root = new Pane();
 		
-		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		Scene scene = new Scene(root, 250, 220, Color.WHITE);
+		stage.setTitle("Test");
+		stage.setScene(scene);
+		stage.show();
 		
 		uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
 		//creates new userdot
