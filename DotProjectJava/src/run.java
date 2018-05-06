@@ -1,3 +1,17 @@
+//TODO: establish  what actually needs to be in  this class
+
+//new imports below -- JAVAFX
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+//old imports  below -- Java.awt -- TODO: DELETE
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -10,7 +24,7 @@ import javafx.stage.Stage;
 import userint.userInt;
 
 //this class runs the program
-public class run extends Application{
+public class run extends Pane{
 
 	public static void main(String[] args) {
 		

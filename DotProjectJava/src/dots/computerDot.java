@@ -1,5 +1,5 @@
 package dots;
-import java.awt.Color;
+import javafx.scene.paint.Color;
 import userint.Keyboard;
 import java.awt.Image;
 import javax.swing.ImageIcon;
