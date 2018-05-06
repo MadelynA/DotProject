@@ -29,8 +29,8 @@ public static void main(String[] args) {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		Pane canvas = new Pane();
-    	Scene scene = new Scene(canvas, 300, 300);
-    	Circle ball = new Circle(10);
+    	Scene scene = new Scene(canvas, 500, 500);
+    	Circle ball = new Circle(30);
         ball.relocate(0, 10);
         
         canvas.getChildren().add(ball);
@@ -42,14 +42,14 @@ public static void main(String[] args) {
         Bounds bounds = canvas.getBoundsInLocal();
        
         KeyValue keyV = new KeyValue(ball.layoutXProperty(), bounds.getMaxX()-ball.getRadius());
-        KeyFrame k = new KeyFrame(Duration.seconds(3), keyV);
+        KeyFrame k = new KeyFrame(Duration.seconds(5), keyV);
         Timeline timeline = new Timeline(k);
 
 /**
  * new KeyFrame(Duration.seconds(3), 
                 new KeyValue(ball.layoutXProperty(), bounds.getMaxX()-ball.getRadius()))
  */
-        timeline.setCycleCount(2);
+        timeline.setCycleCount(3);
         timeline.play();
 	}
 
