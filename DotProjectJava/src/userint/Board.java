@@ -157,7 +157,7 @@ public void start(Stage primaryStage) throws Exception {
 		System.exit(0);
 		
 	}
-	
+	//TODO: add this into  the auto run of timeline
 	public void actionPerformed(ActionEvent e) {
 		
 		this.updateCDots();
@@ -166,12 +166,13 @@ public void start(Stage primaryStage) throws Exception {
 	}
 	
 	public void checkCollisions() {
-		Ellipse2D.Double uEllipse = uDot.getCirc();
+		Ellipse uEllipse = uDot.getCirc();
 		for(computerDot c: dots) {
-			Ellipse2D.Double cEllipse = c.getCirc();
+			Ellipse cEllipse = c.getCirc();
 			int cRadius = c.getRadius();
 			int uRadius = uDot.getRadius();
-			if(uEllipse.intersects(cEllipse.getBounds2D())) {
+			
+			if(uEllipse.intersects(cEllipse.getBoundsInLocal())) {
 				//there's a collision but now has to check which is larger
 				if(cRadius>uRadius) {
 					//gameover
