@@ -1,6 +1,5 @@
 package dots;
 
-import java.awt.geom.Ellipse2D;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -12,7 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import userint.userInt;
 import javafx.scene.paint.Paint;
 
 import java.awt.*;
