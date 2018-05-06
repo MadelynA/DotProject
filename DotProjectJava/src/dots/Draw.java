@@ -52,8 +52,4 @@ public static void main(String[] args) {
         timeline.setCycleCount(3);
         timeline.play();
 	}
-
-
-	
-	
 }
