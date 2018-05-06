@@ -1,9 +1,10 @@
 package dots;
 
-import java.awt.Color;
-import java.awt.Image;
+import javafx.beans.property.DoubleProperty;
+import javafx.scene.paint.Color;
 import java.util.ArrayList;
-import java.awt.geom.Ellipse2D;
+import javafx.scene.shape.Ellipse;
+
 
 public abstract class Dot {
 	private int[] center = new int[2];
@@ -19,7 +20,8 @@ public abstract class Dot {
 		onBoard = true;
 	}
 	//uses an  ellipse to find the outside of the dot
-	public Ellipse2D.Double getCirc(){
+	public Ellipse getCirc(){
+		DoubleProperty centerX = new DoubleProperty().setValue();
 		double upLeftx = (double) (center[0]-radius);
 		double upLefty = (double) (center[1]+radius);
 		double diameter = (double) (radius*2);
