@@ -56,7 +56,7 @@ public void start(Stage primaryStage) throws Exception {
 	dots = new ArrayList<computerDot>();
 	uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
 	k = new Keyboard();
-<<<<<<< HEAD
+
 	Pane canvas = new Pane();
 	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
 	
@@ -66,11 +66,10 @@ public void start(Stage primaryStage) throws Exception {
     
     canvas.getChildren().add(ball);
     
-=======
 	canvas = new Pane();
 	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
 	//TODO: add key event  listener keyboard
->>>>>>> d0974b94c1c98a4c52eee10ab5abfe96b42a3fd2
+	
     primaryStage.setTitle("Moving Ball");
     primaryStage.setScene(scene);
     primaryStage.show();
