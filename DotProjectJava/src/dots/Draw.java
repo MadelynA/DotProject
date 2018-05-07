@@ -28,8 +28,9 @@ public class Draw extends Application {
 		// TODO Auto-generated method stub
 		Pane canvas = new Pane();
     	Scene scene = new Scene(canvas, 500, 500);
-    	Circle ball = new Circle();
-        ball.relocate(0, 10);
+    	Circle ball = new Circle(30);
+        ball.relocate(100, 300);
+
         
         canvas.getChildren().add(ball);
         

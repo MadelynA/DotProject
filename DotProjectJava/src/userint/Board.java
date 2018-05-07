@@ -41,6 +41,9 @@ public class Board extends Application{
 	private final int startDot_X = WIDTH/2;
 	private final int startDot_Y = HEIGHT/2;
 	private Keyboard k;
+	private Pane canvas;
+	private Bounds bounds;
+	private Timeline timeline;
 	//sets location of dot start to center so that it begins in center
 	
 public static void main(String[] args) {
@@ -51,7 +54,9 @@ public static void main(String[] args) {
 public void start(Stage primaryStage) throws Exception {
 	// TODO Auto-generated method stub
 	dots = new ArrayList<computerDot>();
+	uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
 	k = new Keyboard();
+<<<<<<< HEAD
 	Pane canvas = new Pane();
 	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
 	
@@ -61,38 +66,45 @@ public void start(Stage primaryStage) throws Exception {
     
     canvas.getChildren().add(ball);
     
+=======
+	canvas = new Pane();
+	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
+	//TODO: add key event  listener keyboard
+>>>>>>> d0974b94c1c98a4c52eee10ab5abfe96b42a3fd2
     primaryStage.setTitle("Moving Ball");
     primaryStage.setScene(scene);
     primaryStage.show();
     
-    Bounds bounds = canvas.getBoundsInLocal();
+    bounds = canvas.getBoundsInLocal();
    
-    KeyValue keyV = new KeyValue(ball.layoutXProperty(), bounds.getMaxX()-ball.getRadius());
-    KeyFrame k = new KeyFrame(Duration.seconds(5), keyV);
-    Timeline timeline = new Timeline(k);
+   
+    timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
+    	actionPerformed();
+    }));
+    
+    Draw(uDot);
+    startGame();
+    
+    //
 
 /**
 * new KeyFrame(Duration.seconds(3), 
             new KeyValue(ball.layoutXProperty(), bounds.getMaxX()-ball.getRadius()))
 */
-    timeline.setCycleCount(3);
+    timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
 }
+private void Draw(Dot dot) {
+	Circle circ = new Circle(dot.getRadius());
+	circ.relocate(dot.getCenterX(),dot.getCenterY());
+	//sets new circle for dot and sets center
 	
-	private void initBoard(Stage stage) {
-		Pane root = new Pane();
-		
-		Scene scene = new Scene(root, 250, 220, Color.WHITE);
-		stage.setTitle("Test");
-		stage.setScene(scene);
-		stage.show();
-		
-		uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
-		//creates new userdot
-		Draw(uDot);
-		//draws dot on screen
-		
+	canvas.getChildren().add(circ);
+	KeyValue keyV = new KeyValue(circ.layoutXProperty(), bounds.getMaxX() - circ.getRadius() );
+	KeyFrame k = new KeyFrame(Duration.seconds(10), keyV);
+	timeline.getKeyFrames().add(k);
 	}
+
 	
 	private void startGame() {
 		//creates 5 computer dots to begin with
@@ -142,10 +154,6 @@ public void start(Stage primaryStage) throws Exception {
 		dots.add(new computerDot(WIDTH, HEIGHT, Color.RED, radius, k));
 	}
 	
-	private void Draw(Dot dot) {
-		
-	}
-	
 	private void gameOver() {
 		//currently make it just pause and exit
 		
@@ -155,7 +163,7 @@ public void start(Stage primaryStage) throws Exception {
 		
 	}
 	//TODO: add this into  the auto run of timeline
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed() {
 		
 		this.updateCDots();
 		this.updateUDot();
