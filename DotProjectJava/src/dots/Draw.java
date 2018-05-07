@@ -17,7 +17,7 @@ import java.awt.*;
 
 public class Draw extends Application {
 	
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		launch(args);
 		
@@ -28,7 +28,7 @@ public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Pane canvas = new Pane();
     	Scene scene = new Scene(canvas, 500, 500);
-    	Circle ball = new Circle(30);
+    	Circle ball = new Circle();
         ball.relocate(0, 10);
         
         canvas.getChildren().add(ball);
@@ -50,4 +50,6 @@ public static void main(String[] args) {
         timeline.setCycleCount(3);
         timeline.play();
 	}
+
+
 }

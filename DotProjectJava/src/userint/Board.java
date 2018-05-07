@@ -6,6 +6,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -41,12 +42,6 @@ public class Board extends Application{
 	private final int startDot_Y = HEIGHT/2;
 	private Keyboard k;
 	//sets location of dot start to center so that it begins in center
-	public Board(Stage stage) {
-		dots = new ArrayList<computerDot>();
-		k = new Keyboard();
-		initBoard(stage);
-		startGame();
-	}
 	
 public static void main(String[] args) {
 		
@@ -58,7 +53,9 @@ public void start(Stage primaryStage) throws Exception {
 	dots = new ArrayList<computerDot>();
 	k = new Keyboard();
 	Pane canvas = new Pane();
-	Scene scene = new Scene(canvas, 500, 500);
+	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
+	
+	
 	Circle ball = new Circle(30);
     ball.relocate(0, 10);
     
