@@ -66,14 +66,16 @@ public class userDot extends Dot {
 	
 	public void grow() {
 		//grows dot by one pixel radius when it hits a dot smaller than it
-		//this.radius = this.radius+1;
-		this.setRadius(this.getRadius()+1);
+		this.radius = this.radius+1;
+		//this.setRadius(this.getRadius()+1);
 	}
 	
 	public int getRadius() {
 		return this.radius;
 	}
-	
+	public boolean isOnBoard() {
+		return true;
+	}
 	
 	
 	

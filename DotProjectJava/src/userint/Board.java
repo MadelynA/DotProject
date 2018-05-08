@@ -102,6 +102,9 @@ private void Draw(Dot dot) {
 	TranslateTransition t = new TranslateTransition(Duration.millis(10), circ);
 	circ.relocate(dot.getCenterX(), dot.getCenterY());
 	root.getChildren().add(circ);
+	if(!dot.isOnBoard()) {
+		root.getChildren().remove(circ);
+	}
 	t.setFromX(circ.getCenterX());
 	t.setFromY(dot.getCenterY());
 	dot.movement();
