@@ -32,16 +32,20 @@ public class userDot extends Dot {
 		if(k.isKeyPressed()) {
 			if(k.whatKeyDown().equals(KeyCode.DOWN)) {
 				yChange = 1;
+				xChange = 0;
 			}
 			//else so that both don't happen
 			else if(k.whatKeyDown().equals(KeyCode.UP)) {
 				yChange = -1;
+				xChange = 0;
 			}
 			if(k.whatKeyDown().equals(KeyCode.LEFT)) {
 				xChange = -1;
+				yChange = 0;
 			}
 			else if (k.whatKeyDown().equals(KeyCode.RIGHT)) {
 				xChange = 1;
+				yChange = 0;
 			}
 		}
 		
