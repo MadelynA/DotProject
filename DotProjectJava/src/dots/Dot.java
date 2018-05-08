@@ -49,6 +49,9 @@ public abstract class Dot {
 	public Color getColor() {
 		return c;
 	}
+	public void setColor(Color color) {
+		this.c=color;
+	}
 	public boolean isOnBoard() {
 		return onBoard;
 	}

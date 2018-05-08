@@ -24,21 +24,25 @@ public class computerDot extends Dot{
 			//it goes only left so  it starts along the right side
 			centerChange = (int) (Math.random()*BOARD_HEIGHT);//change this val if board height changes
 			this.setCenter(BOARD_WIDTH, centerChange);
+			this.c=Color.ALICEBLUE;
 		}
 		if(mType == 1) {
 			//only right so  starts on left edge
 			centerChange = (int) (Math.random()*BOARD_HEIGHT);
 			this.setCenter(0, centerChange);
+			this.c =Color.LIGHTCORAL;
 		}
 		if(mType == 2) {
 			//moves down so begins along top
 			centerChange = (int) (Math.random()*BOARD_WIDTH);
 			this.setCenter(centerChange, BOARD_HEIGHT);
+			this.c=Color.LIGHTGREEN;
 		}
 		if(mType == 3) {
 			//moves up so begins on bottom
 			centerChange = (int) (Math.random()*BOARD_WIDTH);
 			this.setCenter(centerChange, 0);
+			this.c=Color.LAVENDER;
 		}
 		
 		this.k = k;

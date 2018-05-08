@@ -62,7 +62,7 @@ public void start(Stage primaryStage) throws Exception {
 	this.primaryStage = primaryStage;
 	dots = new ArrayList<computerDot>();
 	k = new Keyboard();
-	uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
+	uDot = new userDot(startDot_X, startDot_Y, Color.DARKRED, 3, k);
     
 	root = new Group();
 	canvas = new Pane();
@@ -78,7 +78,7 @@ public void start(Stage primaryStage) throws Exception {
     pt = new ParallelTransition();
     timeline = new Timeline();
     
-KeyFrame frame = new KeyFrame(Duration.millis(10),event -> {
+KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
 		
 		actionPerformed();
 		
@@ -98,6 +98,7 @@ KeyFrame frame = new KeyFrame(Duration.millis(10),event -> {
 
 private void Draw(Dot dot) {
 	Circle circ = new Circle(dot.getRadius());
+	circ.setFill(dot.getColor());
 	TranslateTransition t = new TranslateTransition(Duration.millis(10), circ);
 	circ.relocate(dot.getCenterX(), dot.getCenterY());
 	root.getChildren().add(circ);
@@ -157,8 +158,11 @@ private void Draw(Dot dot) {
 		int rad = (int) (Math.random()*uDot.getRadius());
 		//creates one smaller and one larger
 		int rad2 = (int) (Math.random()*uDot.getRadius()+uDot.getRadius());
+		int addSecond = (int) (Math.random()*10);
 		this.addNewCDot(rad);
-		this.addNewCDot(rad2);
+		if(addSecond < 2) {
+			this.addNewCDot(rad2);
+		}
 	}
 	
 	private void addNewCDot(int radius) {
