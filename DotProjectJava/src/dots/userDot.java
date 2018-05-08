@@ -10,8 +10,8 @@ import javafx.scene.shape.Ellipse;
 public class userDot extends Dot {
 	
 	private int score;
-	private int xChange;
-	private int yChange;
+	private int xChange = 0;
+	private int yChange = 0;
 	private Keyboard k;
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	

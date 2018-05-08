@@ -11,6 +11,7 @@ public class computerDot extends Dot{
 	private int yChange = 0;
 	private int mType;
 	private Keyboard  k;
+	private boolean onBoard = true;
 	
 	
 	public computerDot(int width, int height, Color color, int radius, Keyboard k) {
@@ -58,7 +59,7 @@ public class computerDot extends Dot{
 	
 	public boolean onBoard() {
 		//checks if it is within the board bounds
-		if(this.getCenterX()<0 || this.getCenterX()>400 || this.getCenterY()<0 || this.getCenterY()>800) {
+		if(this.getCenterX()<0 || this.getCenterX()>BOARD_WIDTH || this.getCenterY()<0 || this.getCenterY()>BOARD_HEIGHT) {
 			return false;
 		}
 		return true;

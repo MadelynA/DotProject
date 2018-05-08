@@ -4,10 +4,12 @@ package userint;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.*;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Bounds;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -33,9 +35,10 @@ import dots.*;
 
 public class Board extends Application{
 	
+	private ParallelTransition pt;
 	private userDot uDot;
 	private List<computerDot> dots;
-	private boolean inGame;
+	private boolean inGame = true;
 	private final int WIDTH = 800;
 	private final int HEIGHT = 600;
 	private final int startDot_X = WIDTH/2;
@@ -44,6 +47,9 @@ public class Board extends Application{
 	private Pane canvas;
 	private Bounds bounds;
 	private Timeline timeline;
+	private Scene scene;
+	private Group root;
+	private Stage primaryStage;
 	//sets location of dot start to center so that it begins in center
 	
 public static void main(String[] args) {
@@ -53,56 +59,63 @@ public static void main(String[] args) {
 	}
 public void start(Stage primaryStage) throws Exception {
 	// TODO Auto-generated method stub
+	this.primaryStage = primaryStage;
 	dots = new ArrayList<computerDot>();
-	uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
 	k = new Keyboard();
-
-	Pane canvas = new Pane();
-	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
-	
-	
-	Circle ball = new Circle(30);
-    ball.relocate(0, 10);
+	uDot = new userDot(startDot_X, startDot_Y, Color.CYAN, 3, k);
     
-    canvas.getChildren().add(ball);
-    
+	root = new Group();
 	canvas = new Pane();
-	Scene scene = new Scene(canvas, WIDTH, HEIGHT);
-	//TODO: add key event  listener keyboard
+	scene = new Scene(root, WIDTH, HEIGHT);
+	scene.setOnKeyPressed(k);
 	
-    primaryStage.setTitle("Moving Ball");
+    primaryStage.setTitle("Dot Project");
     primaryStage.setScene(scene);
     primaryStage.show();
     
     bounds = canvas.getBoundsInLocal();
    
-   
-    timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
-    	actionPerformed();
-    }));
+    pt = new ParallelTransition();
+    timeline = new Timeline();
     
-    Draw(uDot);
+KeyFrame frame = new KeyFrame(Duration.millis(10),event -> {
+		
+		actionPerformed();
+		
+		});
+	timeline.getKeyFrames().add(frame);
+   
     startGame();
+    actionPerformed();
+    
     
     //
-
-/**
-* new KeyFrame(Duration.seconds(3), 
-            new KeyValue(ball.layoutXProperty(), bounds.getMaxX()-ball.getRadius()))
-*/
+    pt.play();
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+    
 }
+
 private void Draw(Dot dot) {
 	Circle circ = new Circle(dot.getRadius());
-	circ.relocate(dot.getCenterX(),dot.getCenterY());
+	TranslateTransition t = new TranslateTransition(Duration.millis(10), circ);
+	circ.relocate(dot.getCenterX(), dot.getCenterY());
+	root.getChildren().add(circ);
+	t.setFromX(circ.getCenterX());
+	t.setFromY(dot.getCenterY());
+	dot.movement();
+	t.setToX(circ.getCenterX());
+	t.setToY(dot.getCenterY());
 	//sets new circle for dot and sets center
 	
-	canvas.getChildren().add(circ);
-	KeyValue keyV = new KeyValue(circ.layoutXProperty(), bounds.getMaxX() - circ.getRadius() );
-	KeyFrame k = new KeyFrame(Duration.seconds(10), keyV);
-	timeline.getKeyFrames().add(k);
-	}
+	pt.getChildren().add(t);
+	primaryStage.setScene(scene);
+	primaryStage.show();
+	
+	//timeline part below
+	
+
+}
 
 	
 	private void startGame() {
@@ -112,13 +125,13 @@ private void Draw(Dot dot) {
 		this.addNewCDot(3);
 		this.addNewCDot(4);
 		this.addNewCDot(5);
+		inGame = true;
 		
 	}
 	
 	private void updateUDot() {
 		//checks userDot to move it if a key is pressed
 		if(inGame) {
-			uDot.movement();
 			this.Draw(uDot);
 			this.checkCollisions();
 		}
@@ -129,7 +142,6 @@ private void Draw(Dot dot) {
 		if(inGame) {
 			for(computerDot cDot: dots) {
 				if(cDot.onBoard()) {
-					cDot.movement();
 					this.Draw(cDot);
 				}
 				else {
