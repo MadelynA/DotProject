@@ -98,10 +98,12 @@ KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
 
 private void Draw(Dot dot) {
 	Circle circ = new Circle(dot.getRadius());
+	
 	circ.setFill(dot.getColor());
 	TranslateTransition t = new TranslateTransition(Duration.millis(10), circ);
 	circ.relocate(dot.getCenterX(), dot.getCenterY());
 	root.getChildren().add(circ);
+	
 	if(!dot.isOnBoard()) {
 		root.getChildren().remove(circ);
 	}

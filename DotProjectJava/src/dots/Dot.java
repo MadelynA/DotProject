@@ -2,6 +2,8 @@ package dots;
 
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
+
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 
 
@@ -10,6 +12,8 @@ public abstract class Dot {
 	public Color c;
 	public int radius;
 	private boolean onBoard;
+	public Circle circle;
+	public boolean hasCircle;
 	
 	public Dot(int xCenter, int yCenter, Color color, int radius) {
 		this.radius = radius;
@@ -17,6 +21,7 @@ public abstract class Dot {
 		center[1] = yCenter;
 		c = color;
 		onBoard = true;
+		hasCircle = false;
 	}
 	//uses an  ellipse to find the outside of the dot
 	public Ellipse getCirc(){
