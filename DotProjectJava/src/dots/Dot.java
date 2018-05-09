@@ -13,7 +13,7 @@ public abstract class Dot {
 	public int radius;
 	private boolean onBoard;
 	public Circle circle;
-	public boolean hasCircle;
+
 	
 	public Dot(int xCenter, int yCenter, Color color, int radius) {
 		this.radius = radius;
@@ -21,7 +21,7 @@ public abstract class Dot {
 		center[1] = yCenter;
 		c = color;
 		onBoard = true;
-		hasCircle = false;
+		this.circle = new Circle(this.radius);
 	}
 	//uses an  ellipse to find the outside of the dot
 	public Ellipse getCirc(){
