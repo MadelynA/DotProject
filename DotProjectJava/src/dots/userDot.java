@@ -13,6 +13,7 @@ public class userDot extends Dot {
 	private int xChange = 0;
 	private int yChange = 0;
 	private Keyboard k;
+	private int moveSpeed = 1;
 	//score will start at 0 and increase by a set amount per second? dot eaten? TBD
 	
 	public userDot(int xCenter, int yCenter, Color color, int radius, Keyboard k) {
@@ -26,28 +27,47 @@ public class userDot extends Dot {
 		//set up image
 	}
 	
+	private void increaseMoveSpeed() {
+		if( moveSpeed<10){
+			moveSpeed ++;
+		}
+	}
+	
+	private void decreaseMoveSpeed() {
+		if(moveSpeed>1) {
+			moveSpeed--;
+		}
+	}
+	
 	
 	public void movement() {
 		
 		if(k.isKeyPressed()) {
 			if(k.whatKeyDown().equals(KeyCode.DOWN)) {
-				yChange = 1;
+				yChange = moveSpeed;
 				xChange = 0;
 			}
 			//else so that both don't happen
 			else if(k.whatKeyDown().equals(KeyCode.UP)) {
-				yChange = -1;
+				yChange = -1*moveSpeed;
 				xChange = 0;
 			}
 			if(k.whatKeyDown().equals(KeyCode.LEFT)) {
-				xChange = -1;
+				xChange = -1*moveSpeed;
 				yChange = 0;
 			}
 			else if (k.whatKeyDown().equals(KeyCode.RIGHT)) {
-				xChange = 1;
+				xChange = moveSpeed;
 				yChange = 0;
 			}
+			if(k.whatKeyDown().equals(KeyCode.COMMA)) {
+				decreaseMoveSpeed();
+			}
+			else if(k.whatKeyDown().equals(KeyCode.PERIOD)) {
+				increaseMoveSpeed();
+			}
 		}
+		
 		
 		this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);
 		//will go in direction of change

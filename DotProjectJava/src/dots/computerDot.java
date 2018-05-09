@@ -12,6 +12,7 @@ public class computerDot extends Dot{
 	private int mType;
 	private Keyboard  k;
 	private boolean onBoard = true;
+	private int moveSpeed;
 	
 	
 	public computerDot(int width, int height, Color color, int radius, Keyboard k) {
@@ -19,12 +20,13 @@ public class computerDot extends Dot{
 		mType = (int) (Math.random()*4);
 		BOARD_HEIGHT=height;
 		BOARD_WIDTH = width;
+		moveSpeed = (int) (Math.random()*5);
 		//sets xCenter and yCenter based on direction of movement
 		if(mType ==0) {
 			//it goes only left so  it starts along the right side
 			centerChange = (int) (Math.random()*BOARD_HEIGHT);//change this val if board height changes
 			this.setCenter(BOARD_WIDTH, centerChange);
-			this.c=Color.ALICEBLUE;
+			this.c=Color.BLUEVIOLET;
 		}
 		if(mType == 1) {
 			//only right so  starts on left edge
@@ -72,19 +74,19 @@ public class computerDot extends Dot{
 	public void movementType() {
 		if(this.mType==0) {
 			//goes only left
-			xChange = -1;
+			xChange = -1*moveSpeed;
 		}
 		if(this.mType==1) {
 			//goes only right
-			xChange = 1;
+			xChange = moveSpeed;
 		}
 		if(this.mType==2) {
 			//goes down
-			yChange = -1;
+			yChange = -1*moveSpeed;
 		}
 		if(this.mType == 3) {
 			//goes up
-			yChange  = 1;
+			yChange  = moveSpeed;
 		}
 		
 	}
