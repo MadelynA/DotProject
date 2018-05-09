@@ -8,9 +8,13 @@ import javafx.animation.*;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -93,6 +97,20 @@ KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
     pt.play();
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+    
+    scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>
+    () {
+
+          @Override
+          public void handle(KeyEvent t) {
+            if(t.getCode()==KeyCode.ESCAPE)
+            {
+                System.out.println("click on escape");
+              //Stage sb = (Stage)label.getScene().getWindow();//use any one object
+             primaryStage.close();
+            }
+          }
+      });
     
 }
 
