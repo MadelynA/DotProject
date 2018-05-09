@@ -211,6 +211,12 @@ private void Draw(Dot dot) {
 		Media sound  = new Media(new File(OverFile).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.play();
+		try {
+			wait(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Maximum radius: "+uDot.getRadius());
 		System.exit(0);
 		
