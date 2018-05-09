@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
@@ -33,8 +34,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.paint.Paint;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.SourceDataLine;
+
+import javafx.scene.media.*;
+
 import dots.*;
 
 public class Board extends Application{
@@ -55,12 +64,16 @@ public class Board extends Application{
 	private Group root;
 	private Stage primaryStage;
 	//sets location of dot start to center so that it begins in center
+	private String eatFile = "Eat.mp3";
+	private String OverFile = "gameOver.wav";
 	
 public static void main(String[] args) {
 		
 		launch(args);
 		
 	}
+
+	
 public void start(Stage primaryStage) throws Exception {
 	// TODO Auto-generated method stub
 	this.primaryStage = primaryStage;
@@ -195,6 +208,9 @@ private void Draw(Dot dot) {
 		//currently make it just pause and exit
 		
 		inGame = false;
+		Media sound  = new Media(new File(OverFile).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
 		System.out.println("Maximum radius: "+uDot.getRadius());
 		System.exit(0);
 		
@@ -215,6 +231,9 @@ private void Draw(Dot dot) {
 			int uRadius = uDot.getRadius();
 			
 			if(uEllipse.intersects(cEllipse.getBoundsInLocal())) {
+				Media s = new Media(new File(eatFile).toURI().toString());
+				MediaPlayer mP = new MediaPlayer(s);
+				mP.play();
 				//there's a collision but now has to check which is larger
 				if(cRadius>uRadius) {
 					//gameover
