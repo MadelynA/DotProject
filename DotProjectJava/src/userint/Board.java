@@ -105,7 +105,6 @@ KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
           public void handle(KeyEvent t) {
             if(t.getCode()==KeyCode.ESCAPE)
             {
-                System.out.println("click on escape");
               //Stage sb = (Stage)label.getScene().getWindow();//use any one object
              primaryStage.close();
             }
