@@ -195,7 +195,7 @@ private void Draw(Dot dot) {
 		int rad2 = (int) (Math.random()*uDot.getRadius()+uDot.getRadius());
 		int addSecond = (int) (Math.random()*10);
 		this.addNewCDot(rad);
-		if(addSecond < 2) {
+		if(addSecond < 7) {
 			this.addNewCDot(rad2);
 		}
 	}
