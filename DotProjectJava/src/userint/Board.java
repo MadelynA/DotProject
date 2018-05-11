@@ -52,8 +52,8 @@ public class Board extends Application{
 	private userDot uDot;
 	private List<computerDot> dots;
 	private boolean inGame = true;
-	private final int WIDTH = 800;
-	private final int HEIGHT = 600;
+	private final int WIDTH = 1200;
+	private final int HEIGHT = 700;
 	private final int startDot_X = WIDTH/2;
 	private final int startDot_Y = HEIGHT/2;
 	private Keyboard k;
