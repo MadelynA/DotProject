@@ -130,6 +130,7 @@ private void Draw(Dot dot) {
 	Circle circ = new Circle(dot.getRadius());
 	
 	circ.setFill(dot.getColor());
+	circ.setStroke(Color.BLACK);
 	TranslateTransition t = new TranslateTransition(Duration.millis(10), circ);
 	circ.relocate(dot.getCenterX(), dot.getCenterY());
 	root.getChildren().add(circ);
