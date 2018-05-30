@@ -9,8 +9,11 @@ import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 import java.awt.*;
@@ -26,6 +29,7 @@ public class Draw extends Application {
 	//takes a g, draws images
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
+		
 		Pane canvas = new Pane();
     	Scene scene = new Scene(canvas, 500, 500);
     	Circle ball = new Circle(30);

@@ -20,6 +20,8 @@ import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.animation.KeyFrame;
@@ -86,8 +88,9 @@ public void start(Stage primaryStage) throws Exception {
 	scene = new Scene(root, WIDTH, HEIGHT);
 	scene.setOnKeyPressed(k);
 	
-    primaryStage.setTitle("Dot Project");
+    primaryStage.setTitle("Dot Game");
     primaryStage.setScene(scene);
+    //primaryStage.setScene(s); 
     primaryStage.show();
     
     bounds = canvas.getBoundsInLocal();
@@ -95,7 +98,7 @@ public void start(Stage primaryStage) throws Exception {
     pt = new ParallelTransition();
     timeline = new Timeline();
     
-KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
+    KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
 		
 		actionPerformed();
 		
@@ -127,6 +130,10 @@ KeyFrame frame = new KeyFrame(Duration.millis(100),event -> {
 }
 
 private void Draw(Dot dot) {
+	
+         
+     
+      
 	Circle circ = new Circle(dot.getRadius());
 	
 	circ.setFill(dot.getColor());
