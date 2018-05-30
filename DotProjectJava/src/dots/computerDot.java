@@ -30,19 +30,19 @@ public class computerDot extends Dot{
 		}
 		if(mType == 1) {
 			//only right so  starts on left edge
-			centerChange = (int) (Math.random()*BOARD_HEIGHT);
+			centerChange = (int) (Math.random() * BOARD_HEIGHT);
 			this.setCenter(0, centerChange);
-			this.c =Color.LIGHTCORAL;
+			this.c = Color.LIGHTCORAL;
 		}
 		if(mType == 2) {
 			//moves down so begins along top
-			centerChange = (int) (Math.random()*BOARD_WIDTH);
+			centerChange = (int) (Math.random() * BOARD_WIDTH);
 			this.setCenter(centerChange, BOARD_HEIGHT);
-			this.c=Color.LIGHTGREEN;
+			this.c = Color.LIGHTGREEN;
 		}
 		if(mType == 3) {
 			//moves up so begins on bottom
-			centerChange = (int) (Math.random()*BOARD_WIDTH);
+			centerChange = (int) (Math.random() * BOARD_WIDTH);
 			this.setCenter(centerChange, 0);
 			this.c = Color.LAVENDER;
 		}
@@ -74,7 +74,7 @@ public class computerDot extends Dot{
 	public void movementType() {
 		if(this.mType==0) {
 			//goes only left
-			xChange = -1*moveSpeed;
+			xChange = -1 * moveSpeed;
 		}
 		if(this.mType==1) {
 			//goes only right

@@ -197,9 +197,9 @@ private void Draw(Dot dot) {
 	private void removeDot(computerDot c) {
 		//removes and replaces dot
 		dots.remove(c);
-		int rad = (int) (Math.random()*uDot.getRadius());
+		int rad = (int) (Math.random() * uDot.getRadius());
 		//creates one smaller and one larger
-		int rad2 = (int) (Math.random()*uDot.getRadius()+uDot.getRadius());
+		int rad2 = (int) (Math.random() * uDot.getRadius()+uDot.getRadius());
 		int addSecond = (int) (Math.random()*10);
 		this.addNewCDot(rad);
 		if(addSecond < 7) {
@@ -255,6 +255,7 @@ private void Draw(Dot dot) {
 				else {
 					//eats dot and grows
 					uDot.grow();
+					uDot.setColor(c.getColor());
 					score++;
 					this.removeDot(c);
 				}
