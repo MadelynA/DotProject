@@ -68,6 +68,7 @@ public class Board extends Application{
 	//sets location of dot start to center so that it begins in center
 	private String eatFile = "Eat.mp3";
 	private String OverFile = "gameOver.wav";
+	public int score = 0;
 	
 public static void main(String[] args) {
 		
@@ -119,10 +120,11 @@ public void start(Stage primaryStage) throws Exception {
 
           @Override
           public void handle(KeyEvent t) {
-            if(t.getCode()==KeyCode.ESCAPE)
+            if(t.getCode() == KeyCode.ESCAPE)
             {
               //Stage sb = (Stage)label.getScene().getWindow();//use any one object
              primaryStage.close();
+         	 System.out.println("Final Score: "+ score);
             }
           }
       });
@@ -131,9 +133,6 @@ public void start(Stage primaryStage) throws Exception {
 
 private void Draw(Dot dot) {
 	
-         
-     
-      
 	Circle circ = new Circle(dot.getRadius());
 	
 	circ.setFill(dot.getColor());
@@ -225,7 +224,7 @@ private void Draw(Dot dot) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Maximum radius: "+uDot.getRadius());
+		System.out.println("Final Score: "+ score);
 		System.exit(0);
 		
 	}
@@ -249,13 +248,14 @@ private void Draw(Dot dot) {
 				MediaPlayer mP = new MediaPlayer(s);
 				mP.play();
 				//there's a collision but now has to check which is larger
-				if(cRadius>uRadius) {
+				if(cRadius > uRadius) {
 					//gameover
 					gameOver();
 				}
 				else {
 					//eats dot and grows
 					uDot.grow();
+					score++;
 					this.removeDot(c);
 				}
 			}

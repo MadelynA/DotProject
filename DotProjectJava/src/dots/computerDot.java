@@ -44,7 +44,7 @@ public class computerDot extends Dot{
 			//moves up so begins on bottom
 			centerChange = (int) (Math.random()*BOARD_WIDTH);
 			this.setCenter(centerChange, 0);
-			this.c=Color.LAVENDER;
+			this.c = Color.LAVENDER;
 		}
 		
 		this.k = k;
@@ -58,7 +58,7 @@ public class computerDot extends Dot{
 		if (this.onBoard()){
 			//doesn't move if not on board
 			this.movementType();
-			this.setCenter(this.getCenterX()+xChange, this.getCenterY()+yChange);
+			this.setCenter(this.getCenterX() + xChange, this.getCenterY() + yChange);
 			//will go in direction of change
 		}
 	}
