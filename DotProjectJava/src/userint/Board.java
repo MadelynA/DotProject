@@ -52,6 +52,7 @@ public class Board extends Application{
 	
 	private ParallelTransition pt;
 	private userDot uDot;
+	private secondUser uDot2;
 	private List<computerDot> dots;
 	private boolean inGame = true;
 	private final int WIDTH = 1200;
@@ -83,6 +84,7 @@ public void start(Stage primaryStage) throws Exception {
 	dots = new ArrayList<computerDot>();
 	k = new Keyboard();
 	uDot = new userDot(startDot_X, startDot_Y, Color.DARKRED, 3, k);
+	uDot2 = new secondUser(startDot_X, startDot_Y, Color.AQUAMARINE, 3, k);
     
 	root = new Group();
 	canvas = new Pane();
@@ -181,6 +183,15 @@ private void Draw(Dot dot) {
 		}
 	}
 	
+	private void updateSUDot() {
+		//checks userDot to move it if a key is pressed
+		if(inGame) {
+			this.Draw(uDot2);
+			this.checkCollisions();
+		}
+	}
+	
+	
 	private void updateCDots() {
 		//updates computerDots with movement
 		if(inGame) {
@@ -234,15 +245,18 @@ private void Draw(Dot dot) {
 		
 		this.updateCDots();
 		this.updateUDot();
+		this.updateSUDot();
 		
 	}
 	
 	public void checkCollisions() {
 		Ellipse uEllipse = uDot.getCirc();
+		Ellipse suEllipse = uDot2.getCirc();
 		for(computerDot c: dots) {
 			Ellipse cEllipse = c.getCirc();
 			int cRadius = c.getRadius();
 			int uRadius = uDot.getRadius();
+			int u2Radius = uDot2.getRadius();
 			
 			if(uEllipse.intersects(cEllipse.getBoundsInLocal())) {
 				Media s = new Media(new File(eatFile).toURI().toString());
@@ -258,6 +272,14 @@ private void Draw(Dot dot) {
 					uDot.grow();
 					//uDot.setColor(c.getColor());
 					score++;
+					this.removeDot(c);
+				}
+				
+				if(cRadius > u2Radius) {
+					gameOver();
+				} else {
+					uDot2.grow();
+					
 					this.removeDot(c);
 				}
 			}

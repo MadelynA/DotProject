@@ -43,27 +43,27 @@ public class secondUser extends Dot {
 	public void movement() {
 		
 		if(k.isKeyPressed()) {
-			if(k.whatKeyDown().equals(KeyCode.DOWN)) {
+			if(k.whatKeyDown().equals(KeyCode.S)) {
 				yChange = moveSpeed;
 				xChange = 0;
 			}
 			//else so that both don't happen
-			else if(k.whatKeyDown().equals(KeyCode.UP)) {
+			else if(k.whatKeyDown().equals(KeyCode.W)) {
 				yChange = -1*moveSpeed;
 				xChange = 0;
 			}
-			if(k.whatKeyDown().equals(KeyCode.LEFT)) {
+			if(k.whatKeyDown().equals(KeyCode.A)) {
 				xChange = -1*moveSpeed;
 				yChange = 0;
 			}
-			else if (k.whatKeyDown().equals(KeyCode.RIGHT)) {
+			else if (k.whatKeyDown().equals(KeyCode.D)) {
 				xChange = moveSpeed;
 				yChange = 0;
 			}
-			if(k.whatKeyDown().equals(KeyCode.COMMA)) {
+			if(k.whatKeyDown().equals(KeyCode.E)) { 
 				decreaseMoveSpeed();
 			}
-			else if(k.whatKeyDown().equals(KeyCode.PERIOD)) {
+			else if(k.whatKeyDown().equals(KeyCode.R)) {
 				increaseMoveSpeed();
 			}
 		}
