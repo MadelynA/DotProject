@@ -151,6 +151,7 @@ private void Draw(Dot dot) {
 	t.setToY(dot.getCenterY());
 	//sets new circle for dot and sets center
 	
+	
 	pt.getChildren().add(t);
 	primaryStage.setScene(scene);
 	primaryStage.show();
@@ -255,7 +256,7 @@ private void Draw(Dot dot) {
 				else {
 					//eats dot and grows
 					uDot.grow();
-					uDot.setColor(c.getColor());
+					//uDot.setColor(c.getColor());
 					score++;
 					this.removeDot(c);
 				}
