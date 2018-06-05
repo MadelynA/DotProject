@@ -43,7 +43,7 @@ public class secondUser extends Dot {
 	public void movement() {
 		
 		if(k.isKeyPressed()) {
-			if(k.whatKeyDown().equals(KeyCode.S)) {
+			if(k.whatKeyDown().equals(KeyCode.DOWN)) {
 				yChange = moveSpeed;
 				xChange = 0;
 			}

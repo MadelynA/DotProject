@@ -148,7 +148,8 @@ private void Draw(Dot dot) {
 	}
 	t.setFromX(circ.getCenterX());
 	t.setFromY(dot.getCenterY());
-	dot.movement();
+	//dot.movement();
+	
 	t.setToX(circ.getCenterX());
 	t.setToY(dot.getCenterY());
 	//sets new circle for dot and sets center
@@ -179,6 +180,7 @@ private void Draw(Dot dot) {
 		//checks userDot to move it if a key is pressed
 		if(inGame) {
 			this.Draw(uDot);
+			uDot.movement();
 			this.checkCollisions();
 		}
 	}
@@ -187,7 +189,8 @@ private void Draw(Dot dot) {
 		//checks userDot to move it if a key is pressed
 		if(inGame) {
 			this.Draw(uDot2);
-			this.checkCollisions();
+			uDot2.movement();
+			this.checkU2Collisions();
 		}
 	}
 	
@@ -244,6 +247,7 @@ private void Draw(Dot dot) {
 	public void actionPerformed() {
 		
 		this.updateCDots();
+		
 		this.updateUDot();
 		this.updateSUDot();
 		
@@ -251,12 +255,10 @@ private void Draw(Dot dot) {
 	
 	public void checkCollisions() {
 		Ellipse uEllipse = uDot.getCirc();
-		Ellipse suEllipse = uDot2.getCirc();
 		for(computerDot c: dots) {
 			Ellipse cEllipse = c.getCirc();
 			int cRadius = c.getRadius();
 			int uRadius = uDot.getRadius();
-			int u2Radius = uDot2.getRadius();
 			
 			if(uEllipse.intersects(cEllipse.getBoundsInLocal())) {
 				Media s = new Media(new File(eatFile).toURI().toString());
@@ -274,6 +276,23 @@ private void Draw(Dot dot) {
 					score++;
 					this.removeDot(c);
 				}
+			}
+			
+		}
+	}
+	
+	public void checkU2Collisions() {
+		Ellipse suEllipse = uDot2.getCirc();
+		for(computerDot c: dots) {
+			Ellipse cEllipse = c.getCirc();
+			int cRadius = c.getRadius();
+			int u2Radius = uDot2.getRadius();
+			
+			if(suEllipse.intersects(cEllipse.getBoundsInLocal())) {
+				Media s = new Media(new File(eatFile).toURI().toString());
+				MediaPlayer mP = new MediaPlayer(s);
+				mP.play();
+				//there's a collision but now has to check which is larger
 				
 				if(cRadius > u2Radius) {
 					gameOver();
