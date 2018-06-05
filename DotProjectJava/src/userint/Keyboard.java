@@ -18,7 +18,9 @@ public class Keyboard implements EventHandler<KeyEvent>{
 			this.iskeyPressed=true;
 			keyDown = e.getCode();
 		}
-		else if(e.getCode().equals(KeyCode.ENTER)||e.getCode().equals(KeyCode.COMMA)||e.getCode().equals(KeyCode.PERIOD)) {
+		else if(e.getCode().equals(KeyCode.ENTER)||e.getCode().equals(KeyCode.COMMA)||e.getCode().equals(KeyCode.PERIOD)
+				|| e.getCode().equals(KeyCode.A) || e.getCode().equals(KeyCode.W) || e.getCode().equals(KeyCode.D)
+				|| e.getCode().equals(KeyCode.S)) {
 			//quits
 			keyDown =  e.getCode();
 			this.iskeyPressed=true;
