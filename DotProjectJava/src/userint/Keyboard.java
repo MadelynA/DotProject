@@ -20,7 +20,7 @@ public class Keyboard implements EventHandler<KeyEvent>{
 		}
 		else if(e.getCode().equals(KeyCode.ENTER)||e.getCode().equals(KeyCode.COMMA)||e.getCode().equals(KeyCode.PERIOD)
 				|| e.getCode().equals(KeyCode.A) || e.getCode().equals(KeyCode.W) || e.getCode().equals(KeyCode.D)
-				|| e.getCode().equals(KeyCode.S)) {
+				|| e.getCode().equals(KeyCode.S) || e.getCode().equals(KeyCode.Q) ||e.getCode().equals(KeyCode.E)) {
 			//quits
 			keyDown =  e.getCode();
 			this.iskeyPressed=true;

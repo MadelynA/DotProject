@@ -148,7 +148,7 @@ private void Draw(Dot dot) {
 	}
 	t.setFromX(circ.getCenterX());
 	t.setFromY(dot.getCenterY());
-	//dot.movement();
+	dot.movement();
 	
 	t.setToX(circ.getCenterX());
 	t.setToY(dot.getCenterY());
@@ -180,7 +180,7 @@ private void Draw(Dot dot) {
 		//checks userDot to move it if a key is pressed
 		if(inGame) {
 			this.Draw(uDot);
-			uDot.movement();
+			//uDot.movement();
 			this.checkCollisions();
 		}
 	}
@@ -189,7 +189,7 @@ private void Draw(Dot dot) {
 		//checks userDot to move it if a key is pressed
 		if(inGame) {
 			this.Draw(uDot2);
-			uDot2.movement();
+			//uDot2.movement();
 			this.checkU2Collisions();
 		}
 	}
